@@ -2,7 +2,7 @@ import '@assets/main.css'
 import '@assets/chrome-bug.css'
 import 'keen-slider/keen-slider.min.css'
 
-import { FC, useEffect } from 'react'
+import { FC, useEffect, Component } from 'react'
 import type { AppProps } from 'next/app'
 import { Head } from '@components/common'
 import { ManagedUIContext } from '@components/ui/context'

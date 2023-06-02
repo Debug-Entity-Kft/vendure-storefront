@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import { CommerceProvider } from '@framework'
 import LoginView from '@components/auth/LoginView'
 import { useUI } from '@components/ui/context'
-import { Navbar, Footer } from '@components/common'
+import {Navbar, Footer, FeatureBar} from '@components/common'
 import ShippingView from '@components/checkout/ShippingView'
 import CartSidebarView from '@components/cart/CartSidebarView'
 import { useAcceptCookies } from '@lib/hooks/useAcceptCookies'
@@ -39,9 +39,9 @@ const ForgotPassword = dynamic(
   }
 )
 
-const FeatureBar = dynamic(() => import('@components/common/FeatureBar'), {
-  ...dynamicProps,
-})
+// const FeatureBar = dynamic(() => import('@components/common/FeatureBar'), {
+//   ...dynamicProps,
+// })
 
 const Modal = dynamic(() => import('@components/ui/Modal'), {
   ...dynamicProps,
