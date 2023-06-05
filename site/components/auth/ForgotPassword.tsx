@@ -1,7 +1,9 @@
-import { FC, useEffect, useState, useCallback } from 'react'
+import { FC, useEffect, useState, useCallback, SyntheticEvent } from 'react'
 import { validate } from 'email-validator'
 import { useUI } from '@components/ui/context'
 import { Logo, Button, Input } from '@components/ui'
+import FilledButton from '@components/material/Buttons/FilledButton'
+import MatInput from '@components/ui/MatInput'
 
 interface Props {}
 
@@ -15,7 +17,7 @@ const ForgotPassword: FC<Props> = () => {
 
   const { setModalView, closeModal } = useUI()
 
-  const handleResetPassword = async (e: React.SyntheticEvent<EventTarget>) => {
+  const handleResetPassword = async (e: SyntheticEvent<EventTarget>) => {
     e.preventDefault()
 
     if (!dirty && !disabled) {
@@ -40,34 +42,32 @@ const ForgotPassword: FC<Props> = () => {
       onSubmit={handleResetPassword}
       className="w-80 flex flex-col justify-between p-3"
     >
-      <div className="flex justify-center pb-12 ">
-        <Logo width={64} height={64} />
+      <div className="flex justify-center pb-8 ">
+        <Logo variant={'wide'} />
       </div>
       <div className="flex flex-col space-y-4">
         {message && (
           <div className="text-red border border-red p-3">{message}</div>
         )}
 
-        <Input placeholder="Email" onChange={setEmail} type="email" />
+        <MatInput placeholder="Email" onChange={setEmail} type="email" />
         <div className="pt-2 w-full flex flex-col">
-          <Button
-            variant="slim"
+          <FilledButton
+            title={'Jelszó visszaállítása'}
             type="submit"
             loading={loading}
             disabled={disabled}
-          >
-            Recover Password
-          </Button>
+          />
         </div>
 
         <span className="pt-3 text-center text-sm">
-          <span className="text-accent-7">Do you have an account?</span>
+          <span className="text-accent-7">Van már fiókod?</span>
           {` `}
           <a
             className="text-accent-9 font-bold hover:underline cursor-pointer"
             onClick={() => setModalView('LOGIN_VIEW')}
           >
-            Log In
+            Lépj be
           </a>
         </span>
       </div>

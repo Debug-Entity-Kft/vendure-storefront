@@ -12,7 +12,7 @@ const Searchbar: FC<Props> = ({ className, id = 'search' }) => {
   const router = useRouter()
 
   useEffect(() => {
-    router.prefetch('/search')
+    void router.prefetch('/search')
   }, [router])
 
   const handleKeyUp = (e: React.KeyboardEvent<HTMLInputElement>) => {

@@ -31,7 +31,7 @@ export default function CustomerMenuContent() {
   const { theme, setTheme } = useTheme()
 
   function handleClick(_: React.MouseEvent<HTMLAnchorElement>, href: string) {
-    router.push(href)
+    void router.push(href)
   }
 
   return (

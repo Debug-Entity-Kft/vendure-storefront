@@ -29,7 +29,6 @@
   @apply cursor-pointer rounded-full border-none transform duration-100 ease-in-out grid;
 
   &:hover {
-    @apply shadow-md;
     transform: scale(1.05);
   }
 }

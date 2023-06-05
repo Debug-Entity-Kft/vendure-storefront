@@ -6,8 +6,9 @@ import { validate } from 'email-validator'
 import TonalButton from '@components/material/Buttons/TonalButton'
 import FilledButton from '@components/material/Buttons/FilledButton'
 import MatInput from '@components/ui/MatInput'
+import useTranslation from 'next-translate/useTranslation'
 
-const LoginView: React.FC = () => {
+const LoginView = () => {
   // Form State
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -16,6 +17,7 @@ const LoginView: React.FC = () => {
   const [dirty, setDirty] = useState(false)
   const [disabled, setDisabled] = useState(false)
   const { setModalView, closeModal } = useUI()
+  const { t } = useTranslation('auth')
 
   const login = useLogin()
 
@@ -74,7 +76,7 @@ const LoginView: React.FC = () => {
               className="error-text inline font-bold hover:underline cursor-pointer"
               onClick={() => setModalView('FORGOT_VIEW')}
             >
-              Elfelejtetted a jelszavad?
+              {t('forgotYourPassword')}
             </a>
           </div>
         )}
@@ -85,7 +87,7 @@ const LoginView: React.FC = () => {
 
         <FilledButton
           className={'!mt-4'}
-          title={'Belépés'}
+          title={t('login')}
           variant="slim"
           type="submit"
           loading={loading}
@@ -93,13 +95,13 @@ const LoginView: React.FC = () => {
         />
 
         <div className="pt-1 text-center text-sm">
-          <span className="text-accent-7">Nincs még fiókod?</span>
+          <span className="text-accent-7">{t('noAccount')}</span>
           {` `}
           <a
             className="text-accent-9 font-bold hover:underline cursor-pointer"
             onClick={() => setModalView('SIGNUP_VIEW')}
           >
-            Regisztrálj
+            {t('goRegister')}
           </a>
         </div>
       </div>

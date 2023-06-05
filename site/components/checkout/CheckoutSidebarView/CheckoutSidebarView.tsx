@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { FC, useState } from 'react'
+import { ChangeEvent, FC, useState } from 'react'
 import CartItem from '@components/cart/CartItem'
 import { Button, Text } from '@components/ui'
 import { useUI } from '@components/ui/context'
@@ -19,7 +19,7 @@ const CheckoutSidebarView: FC = () => {
   const { data: checkoutData, submit: onCheckout } = useCheckout()
   const { clearCheckoutFields } = useCheckoutContext()
 
-  async function handleSubmit(event: React.ChangeEvent<HTMLFormElement>) {
+  async function handleSubmit(event: ChangeEvent<HTMLFormElement>) {
     try {
       setLoadingSubmit(true)
       event.preventDefault()

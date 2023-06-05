@@ -4,6 +4,8 @@ import { ProductCard } from '@components/product'
 import { Grid, Marquee, Hero } from '@components/ui'
 // import HomeAllProductsGrid from '@components/common/HomeAllProductsGrid'
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
+import useTranslation from 'next-translate/useTranslation'
+import Trans from 'next-translate/Trans'
 
 export async function getStaticProps({
   preview,
@@ -38,8 +40,16 @@ export async function getStaticProps({
 export default function Home({
   products,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+  const { t, lang } = useTranslation('common')
+  const example = t('variable-example', { count: 42 })
+
   return (
     <>
+      <div>
+        <h1 className={'headline-large'}>{t('title')}</h1>
+        <p className={'body-large'}>{example}</p>
+      </div>
+
       <Grid variant="filled">
         {products.slice(0, 3).map((product: any, i: number) => (
           <ProductCard

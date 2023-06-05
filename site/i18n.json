@@ -1,0 +1,8 @@
+{
+  "locales": ["hu", "en"],
+  "defaultLocale": "hu",
+  "localeDetection": true,
+  "pages": {
+    "*": ["common", "auth"]
+  }
+}

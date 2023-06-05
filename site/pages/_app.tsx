@@ -2,18 +2,23 @@ import '@assets/main.css'
 import '@assets/chrome-bug.css'
 import 'keen-slider/keen-slider.min.css'
 
-import { FC, useEffect, Component } from 'react'
+import { FC, useEffect, Component, ReactNode } from 'react'
 import type { AppProps } from 'next/app'
 import { Head } from '@components/common'
 import { ManagedUIContext } from '@components/ui/context'
 import { ThemeProvider } from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'
-import { EmotionCache } from '@emotion/react'
 import theme from '@lib/theme'
 
-const Noop: FC = ({ children }) => <>{children}</>
+const Noop = ({ children }: { children: ReactNode }) => <>{children}</>
 
-export default function MyApp({ Component, pageProps }: AppProps) {
+export default function MyApp({
+  Component,
+  pageProps,
+}: {
+  Component: FC & { Layout?: FC }
+  pageProps: any
+}) {
   const Layout = (Component as any).Layout || Noop
 
   useEffect(() => {

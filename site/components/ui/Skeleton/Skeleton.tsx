@@ -1,7 +1,7 @@
 import React, { CSSProperties } from 'react'
 import cn from 'clsx'
 import px from '@lib/to-pixels'
-import s from './Skeleton.module.css'
+import s from './Skeleton.module.scss'
 
 interface SkeletonProps {
   show?: boolean
