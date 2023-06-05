@@ -2,6 +2,8 @@ import { FC, memo, useEffect } from 'react'
 import cn from 'clsx'
 import s from './Searchbar.module.css'
 import { useRouter } from 'next/router'
+import MatInput from '@components/ui/MatInput'
+import { TextField } from '@mui/material'
 
 interface Props {
   className?: string
@@ -37,7 +39,26 @@ const Searchbar: FC<Props> = ({ className, id = 'search' }) => {
       <label className="hidden" htmlFor={id}>
         Search
       </label>
-      <input
+      <TextField
+        variant={'outlined'}
+        sx={{
+          width: '100%',
+          '.MuiOutlinedInput-root': {
+            borderRadius: '3rem !important',
+            width: '100%',
+            '& fieldset': {
+              borderRadius: '3rem !important',
+            },
+          },
+          '.MuiInputBase-input': {
+            background: 'var(--md-sys-color-surface)',
+            color: 'var(--md-sys-color-on-surface)',
+            borderRadius: '3rem !important',
+          },
+          '.MuiOutlinedInput-input': {
+            padding: '.75rem 1rem !important',
+          },
+        }}
         id={id}
         className={s.input}
         placeholder="Search for products..."
@@ -45,7 +66,11 @@ const Searchbar: FC<Props> = ({ className, id = 'search' }) => {
         onKeyUp={handleKeyUp}
       />
       <div className={s.iconContainer}>
-        <svg className={s.icon} fill="currentColor" viewBox="0 0 20 20">
+        <svg
+          className={s.icon}
+          fill="var(--md-sys-color-on-surface)"
+          viewBox="0 0 20 20"
+        >
           <path
             fillRule="evenodd"
             clipRule="evenodd"

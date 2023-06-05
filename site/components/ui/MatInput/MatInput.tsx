@@ -1,5 +1,4 @@
 import cn from 'clsx'
-import s from './MatInput.module.css'
 import React, { InputHTMLAttributes } from 'react'
 import {
   // FilledTextFieldProps,
@@ -18,8 +17,6 @@ export interface InputProps extends BaseTextFieldProps {
 const MatInput: React.FC<InputProps> = (props) => {
   const { className, children, onChange, ...rest } = props
 
-  const rootClassName = cn(s.root, {}, className)
-
   const handleOnChange = (e: any) => {
     if (onChange) {
       onChange(e.target.value)
@@ -29,7 +26,7 @@ const MatInput: React.FC<InputProps> = (props) => {
 
   return (
     <TextField
-      className={rootClassName}
+      className={className}
       onChange={handleOnChange}
       autoComplete="off"
       autoCorrect="off"

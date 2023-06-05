@@ -1,6 +1,6 @@
 {
-  "title": "Hello world",
-  "variable-example": "Using a variable {{count}}",
+  "title": "Csáó Jancsi",
+  "variable-example": "Using a Jani {{count}}",
   "user": {
     "name": "Név",
     "firstName": "Keresztnév",

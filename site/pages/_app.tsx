@@ -8,7 +8,8 @@ import { Head } from '@components/common'
 import { ManagedUIContext } from '@components/ui/context'
 import { ThemeProvider } from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'
-import theme from '@lib/theme'
+import { lightTheme, darkTheme } from '@lib/theme'
+import { useMediaQuery } from '@mui/material'
 
 const Noop = ({ children }: { children: ReactNode }) => <>{children}</>
 
@@ -19,6 +20,7 @@ export default function MyApp({
   Component: FC & { Layout?: FC }
   pageProps: any
 }) {
+  const isDark = useMediaQuery('(prefers-color-scheme: dark)')
   const Layout = (Component as any).Layout || Noop
 
   useEffect(() => {
@@ -29,7 +31,7 @@ export default function MyApp({
     <>
       <Head />
       <ManagedUIContext>
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
           {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
           <CssBaseline />
           <Layout pageProps={pageProps}>

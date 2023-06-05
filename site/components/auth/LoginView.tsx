@@ -70,7 +70,7 @@ const LoginView = () => {
 
       <div className="flex flex-col space-y-3">
         {message && (
-          <div className="error-container error-container-text text-red rounded-lg p-3">
+          <div className="error-container on-error-container-text rounded-lg p-3">
             {message} {` `}
             <a
               className="error-text inline font-bold hover:underline cursor-pointer"
@@ -103,10 +103,10 @@ const LoginView = () => {
         />
 
         <div className="pt-1 text-center text-sm">
-          <span className="text-accent-7">{t('noAccount')}</span>
+          <span>{t('noAccount')}</span>
           {` `}
           <a
-            className="text-accent-9 font-bold hover:underline cursor-pointer"
+            className="font-bold hover:underline cursor-pointer"
             onClick={() => setModalView('SIGNUP_VIEW')}
           >
             {t('goRegister')}

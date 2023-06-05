@@ -17,6 +17,9 @@
   letter-spacing: inherit;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
+
+  background: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
 }
 
 .root .name span.fontsizing {
@@ -25,7 +28,10 @@
 }
 
 .root .price {
-  @apply pt-2 px-6 pb-4 text-sm bg-primary text-accent-9
-  font-semibold inline-block tracking-wide;
+  @apply p-4 text-sm
+  font-semibold w-fit;
   margin-top: -1px;
+
+  background: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-on-primary-container);
 }

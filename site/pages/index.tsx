@@ -45,11 +45,6 @@ export default function Home({
 
   return (
     <>
-      <div>
-        <h1 className={'headline-large'}>{t('title')}</h1>
-        <p className={'body-large'}>{example}</p>
-      </div>
-
       <Grid variant="filled">
         {products.slice(0, 3).map((product: any, i: number) => (
           <ProductCard

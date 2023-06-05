@@ -95,7 +95,7 @@ const SignUpView: FC<Props> = () => {
           onChange={setPassword}
         />
 
-        <span className="text-accent-8">
+        <span className="secondary-container on-secondary-container-text p-4 rounded-lg">
           <span className="inline-block align-middle ">
             <Info width="15" height="15" />
           </span>{' '}
@@ -115,10 +115,10 @@ const SignUpView: FC<Props> = () => {
         </div>
 
         <span className="pt-1 text-center text-sm">
-          <span className="text-accent-7">{t('auth:haveAccount')}</span>
+          <span className="">{t('auth:haveAccount')}</span>
           {` `}
           <a
-            className="text-accent-9 font-bold hover:underline cursor-pointer"
+            className=" font-bold hover:underline cursor-pointer"
             onClick={() => setModalView('LOGIN_VIEW')}
           >
             {t('auth:login')}

@@ -1,6 +1,9 @@
 .root {
-  @apply sticky top-0 bg-primary z-40 transition-all duration-150;
+  @apply sticky top-0 z-40 transition-all duration-150;
   min-height: 74px;
+
+  background: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
 }
 
 .nav {
@@ -12,17 +15,16 @@
 }
 
 .link {
-  @apply inline-flex items-center leading-6
-  transition ease-in-out duration-75 cursor-pointer
-  text-accent-5;
+  @apply inline-flex items-center
+  transition ease-in-out duration-75 cursor-pointer;
 }
 
 .link:hover {
-  @apply text-accent-9;
+  color: var(--md-sys-color-primary);
 }
 
 .link:focus {
-  @apply outline-none text-accent-8;
+  @apply outline-none;
 }
 
 .logo {

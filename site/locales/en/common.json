@@ -1,4 +1,4 @@
 {
-  "title": "Csáó Jancsi",
-  "variable-example": "Using a Jani {{count}}"
+  "title": "Hello world",
+  "variable-example": "Using a variable {{count}}"
 }
