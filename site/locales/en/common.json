@@ -1,4 +1,11 @@
 {
-  "title": "Hello world",
-  "variable-example": "Using a variable {{count}}"
+  "title": "Csáó Jancsi",
+  "variable-example": "Using a Jani {{count}}",
+  "user": {
+    "name": "Name",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "email": "E-mail",
+    "password": "Password"
+  }
 }
