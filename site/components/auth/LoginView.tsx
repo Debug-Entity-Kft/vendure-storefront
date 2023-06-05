@@ -3,6 +3,9 @@ import { Logo, Button, Input } from '@components/ui'
 import useLogin from '@framework/auth/use-login'
 import { useUI } from '@components/ui/context'
 import { validate } from 'email-validator'
+import TonalButton from '@components/material/Buttons/TonalButton'
+import FilledButton from '@components/material/Buttons/FilledButton'
+import MatInput from '@components/ui/MatInput'
 
 const LoginView: React.FC = () => {
   // Form State
@@ -59,40 +62,44 @@ const LoginView: React.FC = () => {
       onSubmit={handleLogin}
       className="w-80 flex flex-col justify-between p-3"
     >
-      <div className="flex justify-center pb-12 ">
-        <Logo width="64px" height="64px" />
+      <div className="flex justify-center pb-8 ">
+        <Logo variant={'wide'} />
       </div>
+
       <div className="flex flex-col space-y-3">
         {message && (
-          <div className="text-red border border-red p-3">
-            {message}. Did you {` `}
+          <div className="error-container error-container-text text-red rounded-lg p-3">
+            {message} {` `}
             <a
-              className="text-accent-9 inline font-bold hover:underline cursor-pointer"
+              className="error-text inline font-bold hover:underline cursor-pointer"
               onClick={() => setModalView('FORGOT_VIEW')}
             >
-              forgot your password?
+              Elfelejtetted a jelszavad?
             </a>
           </div>
         )}
-        <Input type="email" placeholder="Email" onChange={setEmail} />
-        <Input type="password" placeholder="Password" onChange={setPassword} />
 
-        <Button
+        <MatInput label={'E-mail'} type="email" onChange={setEmail} />
+
+        <MatInput label={'Jelszó'} type="password" onChange={setPassword} />
+
+        <FilledButton
+          className={'!mt-4'}
+          title={'Belépés'}
           variant="slim"
           type="submit"
           loading={loading}
           disabled={disabled}
-        >
-          Log In
-        </Button>
+        />
+
         <div className="pt-1 text-center text-sm">
-          <span className="text-accent-7">Don't have an account?</span>
+          <span className="text-accent-7">Nincs még fiókod?</span>
           {` `}
           <a
             className="text-accent-9 font-bold hover:underline cursor-pointer"
             onClick={() => setModalView('SIGNUP_VIEW')}
           >
-            Sign Up
+            Regisztrálj
           </a>
         </div>
       </div>

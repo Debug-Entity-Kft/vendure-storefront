@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import { CommerceProvider } from '@framework'
 import LoginView from '@components/auth/LoginView'
 import { useUI } from '@components/ui/context'
-import {Navbar, Footer, FeatureBar} from '@components/common'
+import { Navbar, Footer, FeatureBar } from '@components/common'
 import ShippingView from '@components/checkout/ShippingView'
 import CartSidebarView from '@components/cart/CartSidebarView'
 import { useAcceptCookies } from '@lib/hooks/useAcceptCookies'
@@ -17,6 +17,8 @@ import { MenuSidebarView } from '@components/common/UserNav'
 import type { Page } from '@commerce/types/page'
 import type { Category } from '@commerce/types/site'
 import type { Link as LinkProps } from '../UserNav/MenuSidebarView'
+import { ForgotPassword, SignUpView } from '@components/auth'
+import { Component, ReactNode, Suspense } from 'react'
 
 const Loading = () => (
   <div className="w-80 h-80 flex items-center text-center justify-center p-3">
@@ -28,22 +30,22 @@ const dynamicProps = {
   loading: Loading,
 }
 
-const SignUpView = dynamic(() => import('@components/auth/SignUpView'), {
-  ...dynamicProps,
-})
-
-const ForgotPassword = dynamic(
-  () => import('@components/auth/ForgotPassword'),
-  {
-    ...dynamicProps,
-  }
-)
+// const SignUpView = dynamic(() => import('@components/auth/SignUpView'), {
+//   ...dynamicProps,
+// })
+//
+// const ForgotPassword = dynamic(
+//   () => import('@components/auth/ForgotPassword'),
+//   {
+//     ...dynamicProps,
+//   }
+// )
 
 // const FeatureBar = dynamic(() => import('@components/common/FeatureBar'), {
 //   ...dynamicProps,
 // })
 
-const Modal = dynamic(() => import('@components/ui/Modal'), {
+const Modal: any = dynamic(() => import('@components/ui/Modal'), {
   ...dynamicProps,
   ssr: false,
 })
@@ -60,11 +62,19 @@ const ModalView: React.FC<{ modalView: string; closeModal(): any }> = ({
   closeModal,
 }) => {
   return (
-    <Modal onClose={closeModal}>
-      {modalView === 'LOGIN_VIEW' && <LoginView />}
-      {modalView === 'SIGNUP_VIEW' && <SignUpView />}
-      {modalView === 'FORGOT_VIEW' && <ForgotPassword />}
-    </Modal>
+    <Suspense
+      fallback={
+        <div className="w-80 h-80 flex items-center text-center justify-center p-3">
+          loading
+        </div>
+      }
+    >
+      <Modal onClose={closeModal}>
+        {modalView === 'LOGIN_VIEW' && <LoginView />}
+        {modalView === 'SIGNUP_VIEW' && <SignUpView />}
+        {modalView === 'FORGOT_VIEW' && <ForgotPassword />}
+      </Modal>
+    </Suspense>
   )
 }
 
@@ -107,8 +117,8 @@ const Layout: React.FC<Props> = ({
   pageProps: { categories = [], ...pageProps },
 }) => {
   const { acceptedCookies, onAcceptCookies } = useAcceptCookies()
-  const { locale = 'en-US' } = useRouter()
-  const navBarlinks = categories.slice(0, 2).map((c) => ({
+  const { locale = 'hu' } = useRouter()
+  const navBarLinks = categories.slice(0, 2).map((c) => ({
     label: c.name,
     href: `/search/${c.slug}`,
   }))
@@ -116,12 +126,12 @@ const Layout: React.FC<Props> = ({
   return (
     <CommerceProvider locale={locale}>
       <div className={cn(s.root)}>
-        <Navbar links={navBarlinks} />
+        <Navbar links={navBarLinks} />
         <main className="fit">{children}</main>
         <Footer pages={pageProps.pages} />
         <ModalUI />
         <CheckoutProvider>
-          <SidebarUI links={navBarlinks} />
+          <SidebarUI links={navBarLinks} />
         </CheckoutProvider>
         <FeatureBar
           title="This site uses cookies to improve your experience. By clicking, you agree to our Privacy Policy."

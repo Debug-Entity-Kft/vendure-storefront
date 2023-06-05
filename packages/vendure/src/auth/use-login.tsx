@@ -16,7 +16,7 @@ export const handler: MutationHook<LoginHook> = {
   async fetcher({ input: { email, password }, options, fetch }) {
     if (!(email && password)) {
       throw new CommerceError({
-        message: 'A email and password are required to login',
+        message: 'Az email és a jelszó megadása kötelező!',
       })
     }
 

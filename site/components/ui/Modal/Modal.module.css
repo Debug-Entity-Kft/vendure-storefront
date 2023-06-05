@@ -6,6 +6,7 @@
 
 .modal {
   @apply bg-primary p-12 border border-accent-2 relative;
+  border-radius: 1.5rem;
 }
 
 .modal:focus {

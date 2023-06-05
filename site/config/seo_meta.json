@@ -1,16 +1,16 @@
 {
-  "title": "ACME Storefront | Powered by Next.js Commerce",
+  "title": "Debug StoreFront",
   "titleTemplate": "%s - ACME Storefront",
-  "description": "Next.js Commerce - https://www.nextjs.org/commerce",
+  "description": "Debug StoreFront Description",
   "openGraph": {
-    "title": "ACME Storefront | Powered by Next.js Commerce",
-    "description": "Next.js Commerce - https://www.nextjs.org/commerce",
+    "title": "Debug StoreFront",
+    "description": "Debug StoreFront Description",
     "type": "website",
-    "url": "https://nextjs.org/commerce",
-    "site_name": "Next.js Commerce",
+    "url": "https://debugentity.hu",
+    "site_name": "Debug StoreFront",
     "images": [
       {
-        "url": "/card.png",
+        "url": "/logo/debug-logo-wide.svg",
         "width": "800",
         "height": "600",
         "alt": "Next.js Commerce"
@@ -18,8 +18,8 @@
     ]
   },
   "twitter": {
-    "handle": "@nextjs",
-    "site": "@nextjs",
+    "handle": "@debugentity",
+    "site": "@debugentity",
     "cardType": "summary_large_image"
   }
 }

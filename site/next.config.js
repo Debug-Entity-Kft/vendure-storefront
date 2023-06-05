@@ -1,5 +1,5 @@
 const commerce = require('./commerce.config.json')
-const {withCommerceConfig, getProviderName} = require('./commerce-config')
+const { withCommerceConfig, getProviderName } = require('./commerce-config')
 
 const provider = commerce.provider || getProviderName()
 const isBC = provider === '@vercel/commerce-bigcommerce'
@@ -15,7 +15,16 @@ module.exports = withCommerceConfig({
     defaultLocale: 'hu',
   },
   images: {
-    domains: ['cdn.shopify.com', 'cdn11.bigcommerce.com', 'cdn.chec.io', 'cdn.sanity.io', 'cdn.vendure.io', 'http://192.168.0.6', '192.168.0.6', '192.168.0.113'],
+    domains: [
+      'cdn.shopify.com',
+      'cdn11.bigcommerce.com',
+      'cdn.chec.io',
+      'cdn.sanity.io',
+      'cdn.vendure.io',
+      'http://192.168.0.6',
+      '192.168.0.6',
+      '192.168.0.113',
+    ],
   },
   rewrites() {
     return [
@@ -32,10 +41,10 @@ module.exports = withCommerceConfig({
       // For Vendure, rewrite the local api url to the remote (external) api url. This is required
       // to make the session cookies work.
       isVendure &&
-      process.env.NEXT_PUBLIC_VENDURE_LOCAL_URL && {
-        source: `${process.env.NEXT_PUBLIC_VENDURE_LOCAL_URL}/:path*`,
-        destination: `${process.env.NEXT_PUBLIC_VENDURE_SHOP_API_URL}/:path*`,
-      },
+        process.env.NEXT_PUBLIC_VENDURE_LOCAL_URL && {
+          source: `${process.env.NEXT_PUBLIC_VENDURE_LOCAL_URL}/:path*`,
+          destination: `${process.env.NEXT_PUBLIC_VENDURE_SHOP_API_URL}/:path*`,
+        },
     ].filter(Boolean)
   },
 })
