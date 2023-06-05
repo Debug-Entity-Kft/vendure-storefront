@@ -1,9 +1,12 @@
-import { FC, useEffect, useState, useCallback } from 'react'
+import { FC, useEffect, useState, useCallback, SyntheticEvent } from 'react'
 import { validate } from 'email-validator'
 import { Info } from '@components/icons'
 import { useUI } from '@components/ui/context'
-import { Logo, Button, Input } from '@components/ui'
+import { Logo } from '@components/ui'
 import useSignup from '@framework/auth/use-signup'
+import MatInput from '@components/ui/MatInput'
+import useTranslation from 'next-translate/useTranslation'
+import FilledButton from '@components/material/Buttons/FilledButton'
 
 interface Props {}
 
@@ -18,10 +21,12 @@ const SignUpView: FC<Props> = () => {
   const [dirty, setDirty] = useState(false)
   const [disabled, setDisabled] = useState(false)
 
+  const { t } = useTranslation('common')
+
   const signup = useSignup()
   const { setModalView, closeModal } = useUI()
 
-  const handleSignup = async (e: React.SyntheticEvent<EventTarget>) => {
+  const handleSignup = async (e: SyntheticEvent<EventTarget>) => {
     e.preventDefault()
 
     if (!dirty && !disabled) {
@@ -65,17 +70,31 @@ const SignUpView: FC<Props> = () => {
       onSubmit={handleSignup}
       className="w-80 flex flex-col justify-between p-3"
     >
-      <div className="flex justify-center pb-12 ">
-        <Logo width={64} height={64} />
+      <div className="flex justify-center pb-8 ">
+        <Logo variant={'wide'} />
       </div>
+
       <div className="flex flex-col space-y-4">
         {message && (
           <div className="text-red border border-red p-3">{message}</div>
         )}
-        <Input placeholder="First Name" onChange={setFirstName} />
-        <Input placeholder="Last Name" onChange={setLastName} />
-        <Input type="email" placeholder="Email" onChange={setEmail} />
-        <Input type="password" placeholder="Password" onChange={setPassword} />
+
+        <MatInput label={t('common:user.firstName')} onChange={setFirstName} />
+
+        <MatInput label={t('common:user.lastName')} onChange={setLastName} />
+
+        <MatInput
+          type="email"
+          label={t('common:user.email')}
+          onChange={setEmail}
+        />
+
+        <MatInput
+          type="password"
+          label={t('common:user.password')}
+          onChange={setPassword}
+        />
+
         <span className="text-accent-8">
           <span className="inline-block align-middle ">
             <Info width="15" height="15" />
@@ -85,25 +104,24 @@ const SignUpView: FC<Props> = () => {
             include numbers.{' '}
           </span>
         </span>
+
         <div className="pt-2 w-full flex flex-col">
-          <Button
-            variant="slim"
+          <FilledButton
+            title={t('auth:register')}
             type="submit"
             loading={loading}
             disabled={disabled}
-          >
-            Sign Up
-          </Button>
+          />
         </div>
 
         <span className="pt-1 text-center text-sm">
-          <span className="text-accent-7">Do you have an account?</span>
+          <span className="text-accent-7">{t('auth:haveAccount')}</span>
           {` `}
           <a
             className="text-accent-9 font-bold hover:underline cursor-pointer"
             onClick={() => setModalView('LOGIN_VIEW')}
           >
-            Log In
+            {t('auth:login')}
           </a>
         </span>
       </div>

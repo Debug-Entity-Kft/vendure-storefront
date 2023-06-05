@@ -81,9 +81,17 @@ const LoginView = () => {
           </div>
         )}
 
-        <MatInput label={'E-mail'} type="email" onChange={setEmail} />
+        <MatInput
+          label={t('common:user.email')}
+          type="email"
+          onChange={setEmail}
+        />
 
-        <MatInput label={'Jelszó'} type="password" onChange={setPassword} />
+        <MatInput
+          label={t('common:user.password')}
+          type="password"
+          onChange={setPassword}
+        />
 
         <FilledButton
           className={'!mt-4'}

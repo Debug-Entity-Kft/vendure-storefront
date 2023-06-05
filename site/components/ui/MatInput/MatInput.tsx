@@ -36,7 +36,6 @@ const MatInput: React.FC<InputProps> = (props) => {
       autoCapitalize="off"
       spellCheck="false"
       {...rest}
-      id="filled-basic"
       variant={props.variant ?? 'outlined'}
     />
   )
