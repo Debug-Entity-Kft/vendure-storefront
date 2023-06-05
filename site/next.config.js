@@ -11,11 +11,11 @@ const isVendure = provider === '@vercel/commerce-vendure'
 module.exports = withCommerceConfig({
   commerce,
   i18n: {
-    locales: ['en-US', 'es'],
-    defaultLocale: 'en-US',
+    locales: ['hu', 'en-US', 'es'],
+    defaultLocale: 'hu',
   },
   images: {
-    domains: ['cdn.shopify.com', 'cdn11.bigcommerce.com', 'cdn.chec.io', 'cdn.sanity.io', 'cdn.vendure.io', 'http://192.168.0.6', '192.168.0.6'],
+    domains: ['cdn.shopify.com', 'cdn11.bigcommerce.com', 'cdn.chec.io', 'cdn.sanity.io', 'cdn.vendure.io', 'http://192.168.0.6', '192.168.0.6', '192.168.0.113'],
   },
   rewrites() {
     return [

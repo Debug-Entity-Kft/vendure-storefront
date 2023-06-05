@@ -1,10 +1,11 @@
 import cn from 'clsx'
 import Link from 'next/link'
-import { FC, useState } from 'react'
-import { useRouter } from 'next/router'
+import {FC, useState} from 'react'
+import {useRouter} from 'next/router'
 import s from './I18nWidget.module.css'
-import { Cross, ChevronUp } from '@components/icons'
+import {Cross, ChevronUp} from '@components/icons'
 import ClickOutside from '@lib/click-outside'
+
 interface LOCALE_DATA {
   name: string
   img: {
@@ -28,6 +29,13 @@ const LOCALES_MAP: Record<string, LOCALE_DATA> = {
       alt: 'US Flag',
     },
   },
+  hu: {
+    name: 'Magyar',
+    img: {
+      filename: 'hun-flag.svg',
+      alt: 'Hungarian Flag',
+    }
+  }
 }
 
 const I18nWidget: FC = () => {
@@ -35,7 +43,7 @@ const I18nWidget: FC = () => {
   const {
     locale,
     locales,
-    defaultLocale = 'en-US',
+    defaultLocale = 'hu',
     asPath: currentPath,
   } = useRouter()
 
@@ -59,7 +67,7 @@ const I18nWidget: FC = () => {
             />
             {options && (
               <span className="cursor-pointer">
-                <ChevronUp className={cn(s.icon, { [s.active]: display })} />
+                <ChevronUp className={cn(s.icon, {[s.active]: display})}/>
               </span>
             )}
           </button>
@@ -73,7 +81,7 @@ const I18nWidget: FC = () => {
                   aria-label="Close panel"
                   className={s.closeButton}
                 >
-                  <Cross className="h-6 w-6" />
+                  <Cross className="h-6 w-6"/>
                 </button>
               </div>
               <ul>
