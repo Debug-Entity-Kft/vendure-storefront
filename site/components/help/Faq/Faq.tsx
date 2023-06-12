@@ -1,10 +1,13 @@
 import Image from 'next/image'
+import s from './Faq.module.scss'
 
 export const Faq = () => {
   return (
-    <section className={'grid grid-cols-2'}>
-      <div>
-        <span className={'display-large'}>Gyakran ismételt kérdések</span>
+    <section className={s.FaqSection}>
+      <div className={'p-6'}>
+        <span className={'headline-large font-bold'}>
+          Gyakran ismételt kérdések
+        </span>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae,
           consectetur cum dolorum earum est ex excepturi exercitationem fugiat
