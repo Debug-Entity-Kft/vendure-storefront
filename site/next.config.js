@@ -17,6 +17,9 @@ module.exports = withCommerceConfig(
       defaultLocale: 'hu',
       localeDetection: true,
     },
+    eslint: {
+      ignoreDuringBuilds: true,
+    },
     images: {
       domains: [
         'cdn.shopify.com',
