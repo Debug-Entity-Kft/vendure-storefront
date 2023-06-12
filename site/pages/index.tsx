@@ -22,9 +22,15 @@ export async function getStaticProps({
   })
   const pagesPromise = commerce.getAllPages({ config, preview })
   const siteInfoPromise = commerce.getSiteInfo({ config, preview })
-  const { products } = await productsPromise
-  const { pages } = await pagesPromise
-  const { categories, brands } = await siteInfoPromise
+  // const { products } = await productsPromise
+  // const { pages } = await pagesPromise
+  // const { categories, brands } = await siteInfoPromise
+
+  const [{ products }, { categories, brands }, { pages }] = await Promise.all([
+    productsPromise,
+    siteInfoPromise,
+    pagesPromise,
+  ])
 
   return {
     props: {
@@ -39,6 +45,7 @@ export async function getStaticProps({
 
 export default function Home({
   products,
+  categories,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { t, lang } = useTranslation('common')
   const example = t('variable-example', { count: 42 })
@@ -84,6 +91,9 @@ export default function Home({
           <ProductCard key={product.id} product={product} variant="slim" />
         ))}
       </Marquee>
+
+      {/*<pre>{JSON.stringify(categories, null, 2)}</pre>*/}
+
       {/* <HomeAllProductsGrid
         newestProducts={products}
         categories={categories}

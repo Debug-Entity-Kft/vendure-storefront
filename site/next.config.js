@@ -30,6 +30,7 @@ module.exports = withCommerceConfig(
         'http://192.168.0.6',
         '192.168.0.6',
         '192.168.0.113',
+        'placekitten.com',
       ],
     },
     rewrites() {

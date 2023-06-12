@@ -33,6 +33,7 @@ const Logo = ({
 
   return (
     <Image
+      priority={true}
       src={
         variant === 'small'
           ? debugLogoSmall

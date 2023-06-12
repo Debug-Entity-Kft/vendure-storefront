@@ -7,5 +7,6 @@
     "lastName": "Vezetéknév",
     "email": "E-mail",
     "password": "Jelszó"
-  }
+  },
+  "all": "Minden"
 }

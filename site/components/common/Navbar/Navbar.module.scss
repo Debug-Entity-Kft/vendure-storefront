@@ -10,21 +10,16 @@
   @apply relative flex flex-row justify-between py-4 md:py-4;
 }
 
-.navMenu {
-  @apply hidden ml-6 space-x-4 lg:block;
-}
-
 .link {
   @apply inline-flex items-center
-  transition ease-in-out duration-75 cursor-pointer;
-}
+  transition ease-in-out duration-300 cursor-pointer;
+  &:hover {
+    color: var(--md-sys-color-primary);
+  }
 
-.link:hover {
-  color: var(--md-sys-color-primary);
-}
-
-.link:focus {
-  @apply outline-none;
+  &:focus {
+    @apply outline-none;
+  }
 }
 
 .logo {
@@ -32,5 +27,23 @@
 
   &:hover {
     transform: scale(1.05);
+  }
+}
+
+
+.navMenu {
+  @apply hidden space-x-4 lg:block;
+}
+
+.bottomContainer {
+  @apply flex items-center gap-6 justify-between pt-1 pb-4;
+}
+
+.helpLink {
+  @apply flex items-center gap-2 transition-all duration-300 ease-in-out;
+
+  &:hover {
+    scale: 1.05;
+    color: var(--md-sys-color-primary);
   }
 }

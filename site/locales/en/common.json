@@ -7,5 +7,6 @@
     "lastName": "Last Name",
     "email": "E-mail",
     "password": "Password"
-  }
+  },
+  "all": "All"
 }
