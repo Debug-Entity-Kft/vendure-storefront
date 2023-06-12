@@ -1,6 +1,6 @@
 {
   "title": "Debug StoreFront",
-  "titleTemplate": "%s - ACME Storefront",
+  "titleTemplate": "%s - Debug StoreFront",
   "description": "Debug StoreFront Description",
   "openGraph": {
     "title": "Debug StoreFront",

@@ -4,6 +4,7 @@ import { GetStaticPropsContext } from 'next'
 import commerce from '@lib/api/commerce'
 import Faq from '@components/help/Faq/Faq'
 import { HelpTitle } from '@components/help/HelpTitle'
+import SEO from '../../components/common/SEO'
 
 export async function getStaticProps({
   preview,
@@ -23,17 +24,20 @@ export async function getStaticProps({
 
 export const HelpPage = () => {
   return (
-    <Container clean className="mx-auto max-w-7xl p-6">
-      <HelpTitle />
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium
-        amet est ipsa modi nesciunt numquam placeat qui repellat saepe tenetur?
-        Asperiores autem corporis dolorem eveniet facilis magni numquam odit
-        quos!
-      </p>
+    <>
+      <SEO title={'Hogyan tudunk segíteni?'} />
+      <Container clean className="mx-auto max-w-7xl p-6">
+        <HelpTitle />
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium
+          amet est ipsa modi nesciunt numquam placeat qui repellat saepe
+          tenetur? Asperiores autem corporis dolorem eveniet facilis magni
+          numquam odit quos!
+        </p>
 
-      <Faq />
-    </Container>
+        <Faq />
+      </Container>
+    </>
   )
 }
 
